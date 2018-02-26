@@ -17,14 +17,14 @@ export class PostCreateWidget extends Component {
     const titleRef = this.refs.title;
     const contentRef = this.refs.content;
     const votes = 0;
+    const clearLocalData = this.setState({localData: ''});
 
     if (nameRef.value && titleRef.value) {
       this.props.addPost(nameRef.value, titleRef.value, this.state.localData, votes);
-      nameRef.value = titleRef.value = this.state.localData = '';
+      nameRef.value = titleRef.value = '';
       localStorage.removeItem('contentRef');
     }
   };
-
   
   componentDidMount() {
     const localStorageData = localStorage.getItem('contentRef');
